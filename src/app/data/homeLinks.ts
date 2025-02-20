@@ -2,7 +2,7 @@ export const homeLinks = [
     {
         title: "Explore outdoors",
         description: "Get outside and enjoy the sun.",
-        href: "/outdoor",
+        href: "/outdoors",
     },
     {
         title: "Find Essentials",
