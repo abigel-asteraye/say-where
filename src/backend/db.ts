@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || "";
+const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
   throw new Error('MONGODB_URI is not set. Please define it ');
@@ -8,13 +8,13 @@ if (!MONGODB_URI) {
 
 let cached = (global as any).mongoose || {conn: null, promise: null};
 
-async function connnectDB(){
+async function connectDB(){
     if (cached.conn) {
         return cached.conn;
     }
 
-    if(!cached.promid){
-        cached.promise = mongoose.connect(MONGODB_URI, {
+    if(!cached.promise){
+        cached.promise = mongoose.connect(MONGODB_URI as string, {
             dbName: "say-where-cluster",
         }).then((mongoose) => mongoose);
     }
@@ -22,4 +22,4 @@ async function connnectDB(){
     return cached.conn;
 }
 
-export default connnectDB;
+export default connectDB;

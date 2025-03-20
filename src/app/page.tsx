@@ -1,25 +1,30 @@
 import React from "react";
-import Card from "./components/Card";
-import { homeLinks } from "./data/homeLinks";
 import Navbar from "./components/Navbar";
+import Card from "./components/Card";
+import { homeLinks } from "../data/homeLinks"; 
+
 
 const HomePage: React.FC = () => {
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-50 py-2">
-        <Navbar/>          
-        <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-50 py-2 mt-20">
-            <h1 className="text-8xl font-bold mb-6 text-center">Say Where?</h1>
-            <p className="text-lg text-gray-800 mb-4 text-center max-w-lg">
-                Discover the best spots in our little South Hadley!
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-[#fdf1e4] py-10 px-4">
+            <Navbar /> 
+
+            <div className="mt-8 bg-[#fdf1e4] rounded-2xl shadow-lg p-10 text-center border border-gray-300">
+                <h1 className="text-5xl font-bold text-gray-900 mb-6">Say Where?</h1>
+
+                <p className="text-lg text-gray-800">
+                    Say Where? is a simple app that helps you find places to go. 
+                    Whether you're looking for a place to eat, study, or just hang out, 
+                    Say Where? has you covered.</p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mt-6">
                 {homeLinks.map((link, index) => (
-                    <Card key={link.title} title={link.title} description={link.description} href={link.href} />
+                    <Card key={index} title={link.title} href={link.href} />
                 ))}
             </div>
         </div>
-        </div>
     );
-}; 
+};
 
 export default HomePage;
