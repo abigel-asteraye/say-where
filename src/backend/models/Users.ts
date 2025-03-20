@@ -3,8 +3,8 @@ import mongoose, { Schema, model, models } from 'mongoose';
 interface IUser extends Document {
     email: string;
     password: string;
-    // name: string;
-    // isAdmin: boolean;
+    name: string;
+    isAdmin: boolean;
   }
 
 const userSchema = new Schema({
@@ -17,17 +17,15 @@ const userSchema = new Schema({
         type:String,
         required:true
     },
-    // name:{
-    //     type:String,
-    //     required:true
-    // },
-    // isAdmin: {
-    //     type: Boolean,
-    //     default: false,
-    // },
+    name:{
+        type:String,
+        required:true
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
 
 });
 
-const User = models.User || model('User', userSchema);
-
-export default User;
+export default mongoose.models.User || mongoose.model<IUser>("User", userSchema);

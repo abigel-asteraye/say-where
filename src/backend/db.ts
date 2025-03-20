@@ -1,4 +1,7 @@
 import mongoose from 'mongoose';
+import dotenv from "dotenv";
+
+dotenv.config()
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -15,7 +18,7 @@ async function connectDB(){
 
     if(!cached.promise){
         cached.promise = mongoose.connect(MONGODB_URI as string, {
-            dbName: "say-where-cluster",
+            dbName: "say-where",
         }).then((mongoose) => mongoose);
     }
     cached.conn = await cached.promise;
