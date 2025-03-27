@@ -37,3 +37,15 @@ export async function POST(request: Request) {
     );
   }
 }
+
+
+export async function GET() {
+    try {
+      await connectDB();
+      const spots = await Spot.find(); // Fetch all spots
+      return NextResponse.json(spots);
+    } catch (error) {
+      console.error("Error fetching spots:", error);
+      return NextResponse.json({ message: "Error fetching spots" }, { status: 500 });
+    }
+  }

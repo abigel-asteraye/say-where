@@ -13,9 +13,9 @@ const HomePage: React.FC = () => {
                 <h1 className="text-5xl font-bold text-gray-900 mb-6">Say Where?</h1>
 
                 <p className="text-lg text-gray-800">
-                    Say Where? is a simple app that helps you find places to go. 
+                    Say Where is a simple website that helps you find places to go. 
                     Whether you're looking for a place to eat, study, or just hang out, 
-                    Say Where? has you covered.</p>
+                    Say Where has got you!</p>
             </div>
 
             <div className="grid grid-cols-2 gap-4 mt-6">

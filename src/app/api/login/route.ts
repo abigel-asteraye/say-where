@@ -8,11 +8,9 @@ export async function POST(request: Request) {
     try {
       await connectDB();
   
-      // Parse the JSON body from the request
       const { email, password } = await request.json();
-  
-      // Find the user in the database
       const user = await User.findOne({ email });
+
       if (!user) {
         return NextResponse.json(
           { message: "This user is not found. Check the credentials" },
@@ -22,6 +20,7 @@ export async function POST(request: Request) {
   
       // Compare the provided password with the hashed password in the database
       const isMatch = await bcrypt.compare(password, user.password);
+      console.log("isMatch", isMatch);
       if (!isMatch) {
         return NextResponse.json(
           { message: "Password is incorrect" },

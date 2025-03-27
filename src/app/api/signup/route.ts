@@ -7,19 +7,20 @@ export async function POST(request: Request) {
   try {
     // Parse the JSON body from the request
     const body = await request.json();
+    console.log("Request body:", body);
 
     // Validate the request body
-    if (!body || !body.email || !body.password) {
+    if (!body || !body.email || !body.password || !body.name) {
       return NextResponse.json(
-        { message: "Email and password are required" },
+        { message: "Name, Email and password are required" },
         { status: 400 }
       );
     }
 
-    const { email, password } = body;
+    const { name, email, password } = body;
 
     // Create the user
-    const user = await createUser(email, password);
+    const user = await createUser(name, email, password);
 
     return NextResponse.json({ message: "User created", user }, { status: 201 });
   } catch (error) {

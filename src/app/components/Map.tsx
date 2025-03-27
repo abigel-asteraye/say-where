@@ -1,28 +1,36 @@
-import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 interface Spot {
+  _id: string;
   name: string;
-  latitude: number;
-  longitude: number;
+  location: {
+    latitude: number;
+    longitude: number;
+  };
+  description: string;
+  type: string;
+  rating: number;
 }
 
-interface MapProps {
+interface MapComponentProps {
   spots: Spot[];
 }
 
-const Map: React.FC<MapProps> = ({ spots }) => {
+const MapComponent = ({ spots }: MapComponentProps) => {
   return (
-    <MapContainer center={[42.2565, -72.5759]} zoom={14} className="w-full h-72 rounded-lg">
+    <MapContainer center={[42.3918, -72.5285]} zoom={10} className="h-full w-full rounded-lg">
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      {spots.map((spot, index) => (
-        <Marker key={index} position={[spot.latitude, spot.longitude]}>
+      {spots.map((spot) => (
+        <Marker key={spot._id} position={[spot.location.latitude, spot.location.longitude]}>
           <Popup>
             <strong>{spot.name}</strong>
+            <p>{spot.description}</p>
+            <p>Type: {spot.type}</p>
+            <p>Rating: {spot.rating}</p>
           </Popup>
         </Marker>
       ))}
@@ -30,4 +38,4 @@ const Map: React.FC<MapProps> = ({ spots }) => {
   );
 };
 
-export default Map;
+export default MapComponent;

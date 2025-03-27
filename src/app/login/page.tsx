@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Layout from "../components/Layout";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -33,58 +34,59 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[#f7f9fc]">
+    <Layout>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-[#f7f9fc]">
 
-      <h1 className="text-4xl font-bold text-gray-800 mb-8">Say Where</h1>
+        <h1 className="text-4xl font-bold text-gray-800 mb-8">Say Where</h1>
 
-   
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">Welcome Back</h2>
-        <p className="text-sm text-gray-600 text-center mb-6">
-          Please login to your account to continue.
-        </p>
+    
+        <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+          <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">Welcome Back</h2>
+          <p className="text-sm text-gray-600 text-center mb-6">
+            Please login to your account to continue.
+          </p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-beige-400 focus:border-beige-400 sm:text-sm"
-              placeholder="Enter your email"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-beige-400 focus:border-beige-400 sm:text-sm"
-              placeholder="Enter your password"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-[#f5deb3] text-gray-800 py-2 px-4 rounded-md hover:bg-[#e6cfa3] transition duration-200"
-          >
-            Login
-          </button>
-          {message && <p className="text-sm text-red-500 mt-2 text-center">{message}</p>}
-        </form>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-beige-400 focus:border-beige-400 sm:text-sm"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-beige-400 focus:border-beige-400 sm:text-sm"
+                placeholder="Enter your password"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-[#f5deb3] text-gray-800 py-2 px-4 rounded-md hover:bg-[#e6cfa3] transition duration-200"
+            >
+              Login
+            </button>
+            {message && <p className="text-sm text-red-500 mt-2 text-center">{message}</p>}
+          </form>
 
-        {/* Redirect to Signup */}
-        <p className="text-sm text-gray-600 text-center mt-6">
-          Don't have an account?{" "}
-          <a href="/signup" className="text-[#f5deb3] hover:underline">
-            Sign up
-          </a>
-        </p>
+          <p className="text-sm text-gray-600 text-center mt-6">
+            Don't have an account?{" "}
+            <a href="/signup" className="text-[#f5deb3] hover:underline">
+              Sign up
+            </a>
+          </p>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

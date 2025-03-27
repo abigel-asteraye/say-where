@@ -33,7 +33,7 @@ const spotSchema = new Schema({
     },
     type:{
         type: String,
-        enum: ["restaurant", "cafe", "bar", "park", "museum", "other", "trail", "grocery", "store", "library"],
+        enum: ["restaurant", "cafe", "bar", "park", "museum", "other", "trail", "grocery", "store", "library", "ponds", "lake", "mountain", "hike", "reservoir"],
         required: true,
     },
     rating:{
