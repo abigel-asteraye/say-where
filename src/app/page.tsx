@@ -1,30 +1,50 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
-import { homeLinks } from "../data/homeLinks"; 
-
+import { homeLinks } from "@/data/homeLinks";
 
 const HomePage: React.FC = () => {
-    return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-[#fdf1e4] py-10 px-4">
-            <Navbar /> 
+  return (
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#fdf1e4] to-[#f5deb3]">
 
-            <div className="mt-8 bg-[#fdf1e4] rounded-2xl shadow-lg p-10 text-center border border-gray-300">
-                <h1 className="text-5xl font-bold text-gray-900 mb-6">Say Where?</h1>
+      <div
+        className="flex flex-col items-center justify-center text-center py-20 px-6"
+        style={{
+          backgroundImage: "url('/hero-bg.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <h1 className="text-5xl font-extrabold text-gray-900 mb-4">
+          Say Where?
+        </h1>
+        <p className="text-lg text-gray-700 max-w-2xl mb-6">
+          Discover the best places to eat, study, or hang out. Say Where is your
+          go-to guide for finding amazing spots near you!
+        </p>
+        <button className="mt-6 bg-[#f5deb3] text-gray-800 py-3 px-6 rounded-lg shadow-md hover:bg-[#e6cfa3] transition duration-200">
+          Get Started
+        </button>
+      </div>
 
-                <p className="text-lg text-gray-800">
-                    Say Where is a simple website that helps you find places to go. 
-                    Whether you're looking for a place to eat, study, or just hang out, 
-                    Say Where has got you!</p>
-            </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8 py-12">
+        {homeLinks.map((link, index) => (
+          <Card
+            key={index}
+            href={link.href}
+            title={link.title}
+            icon={link.icon}
+          />
+        ))}
+      </div>
 
-            <div className="grid grid-cols-2 gap-4 mt-6">
-                {homeLinks.map((link, index) => (
-                    <Card key={index} title={link.title} href={link.href} />
-                ))}
-            </div>
-        </div>
-    );
+      <footer className="bg-[#f5deb3] text-gray-800 py-8 text-center">
+        <p className="text-sm mb-4">
+          © {new Date().getFullYear()} Say Where. All rights reserved.
+        </p>
+      </footer>
+    </div>
+  );
 };
 
 export default HomePage;
