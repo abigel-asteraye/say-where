@@ -2,11 +2,15 @@
 
 import { useState } from "react";
 import Layout from "../components/Layout";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const router = useRouter();
+  const [showSnackbar, setShowSnackbar] = useState(false);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,6 +30,8 @@ const LoginPage = () => {
         setMessage(data.message || "Login failed");
       } else {
         setMessage(data.message || "Login successful!");
+        setShowSnackbar(true);        
+        router.push("/");
       }
     } catch (error) {
       console.error("Login failed:", error);
@@ -84,6 +90,10 @@ const LoginPage = () => {
               Sign up
             </a>
           </p>
+          {showSnackbar && (
+            <div className="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-md shadow-md">
+              {message}</div>
+              )}
         </div>
       </div>
     </Layout>

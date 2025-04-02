@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import Layout from "../components/Layout";
+import { useRouter } from "next/navigation";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,8 +29,15 @@ const SignUpPage = () => {
       if (!response.ok) {
         setMessage(data.message || "Signup failed");
       } else {
-        console.log("Signup worked", data.message);
         setMessage(data.message || "Signup is successful!");
+        setShowSnackbar(true);
+
+        setTimeout(() => {
+          setShowSnackbar(false);
+          router.push("/login");
+        }, 3000);
+        
+        console.log("Signup worked", data.message);
       }
     } catch (error) {
       console.error("Signup failed:", error);
@@ -92,13 +102,16 @@ const SignUpPage = () => {
             {message && <p className="text-sm text-red-500 mt-2 text-center">{message}</p>}
           </form>
 
-          {/* Redirect to Login */}
           <p className="text-sm text-gray-600 text-center mt-6">
             Already have an account?{" "}
             <a href="/login" className="text-[#f5deb3] hover:underline">
               Login
             </a>
           </p>
+          {showSnackbar && (
+            <div className="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-md shadow-md">
+              {message}</div>
+              )}
         </div>
       </div>
   </Layout>
