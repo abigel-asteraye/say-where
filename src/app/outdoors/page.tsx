@@ -66,6 +66,11 @@ const OutdoorsPage = () => {
               {spot.name}
             </h2>
             <p className="text-gray-700">{spot.description}</p>
+            <p className="text-sm text-gray-500 mt-2">Rating: {spot.rating}</p>
+            <p className="text-sm text-gray-500 mt-2">Type: {spot.type}</p>
+            <p className="text-sm text-gray-500 mt-2">
+              Location: {spot.location.latitude}, {spot.location.longitude}
+            </p>
           </div>
         ))}
       </div>
