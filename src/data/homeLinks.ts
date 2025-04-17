@@ -17,7 +17,7 @@ export const homeLinks = [
     {
         title: "Eat Local",
         description: "find your next best meal.",
-        href: "/eat",
+        href: "/dining",
         icon: FaUtensils,
     },
     {
