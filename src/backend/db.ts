@@ -2,8 +2,10 @@ import mongoose from 'mongoose';
 import dotenv from "dotenv";
 
 dotenv.config()
+const URL =  "mongodb+srv://aster22a:M2zFd4tM3RbAisL9@say-where-cluster.vcozm.mongodb.net/say-where?retryWrites=true&w=majority";
+// const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = URL;
 
-const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
   throw new Error('MONGODB_URI is not set. Please define it ');

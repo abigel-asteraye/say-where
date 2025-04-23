@@ -1,4 +1,6 @@
 import mongoose, {Schema, Document} from "mongoose";
+import { ITag } from "./Tags";
+import {TAGS} from "./Tags";
 
 export interface ISpot extends Document {
     name: String,
@@ -10,6 +12,7 @@ export interface ISpot extends Document {
     type: string;
     rating: number;
     review: mongoose.Types.ObjectId[];
+    tags: string[];
 }
 
 const spotSchema = new Schema({
@@ -33,7 +36,6 @@ const spotSchema = new Schema({
     },
     type:{
         type: String,
-        enum: ["restaurant", "cafe", "bar", "park", "museum", "other", "trail", "grocery", "store", "library", "ponds", "lake", "mountain", "hike", "reservoir"],
         required: true,
     },
     rating:{
@@ -45,6 +47,11 @@ const spotSchema = new Schema({
         type: [mongoose.Types.ObjectId],
         ref: "Review",
         default: [],
+    },
+    tags:{
+        type: [String],
+        enum: TAGS,
+        required: true,
     },
 })
 

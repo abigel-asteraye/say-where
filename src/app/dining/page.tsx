@@ -12,6 +12,7 @@ interface Spot {
   };
   description: string;
   type: string;
+  tags: string[];
   rating: number;
 }
 
@@ -40,9 +41,9 @@ const DiningPage = () => {
     return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
   }
 
-  // Filter out spots with invalid coordinates
+  // Filter out spots
   const validSpots = spots.filter(
-    (spot) => spot.location.latitude !== undefined && spot.location.longitude !== undefined
+    (spot) => spot.location.latitude !== undefined && spot.location.longitude !== undefined && spot.tags.includes("dining") 
   );
 
   return (

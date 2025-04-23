@@ -13,6 +13,8 @@ interface Spot {
   description: string;
   type: string;
   rating: number;
+  tags: string[];
+  review: string[];
 }
 
 const OutdoorsPage = () => {
@@ -42,7 +44,7 @@ const OutdoorsPage = () => {
 
   // Filter out spots with invalid coordinates
   const validSpots = spots.filter(
-    (spot) => spot.location.latitude !== undefined && spot.location.longitude !== undefined
+    (spot) => spot.location.latitude !== undefined && spot.location.longitude !== undefined && spot.tags.includes("outdoor")
   );
 
   return (

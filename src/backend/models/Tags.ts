@@ -1,8 +1,8 @@
 import mongoose, {Schema, Document} from "mongoose";
 
+export const TAGS = ["study", "dining", "outdoor", "events", "essentials", "gems"] as const;
 export interface ITag extends Document{
     name: string;
-    spots: mongoose.Types.ObjectId[];
 }
 
 const tagSchema = new Schema({
@@ -10,12 +10,8 @@ const tagSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-    },
-    spots:[{
-        type: mongoose.Types.ObjectId,
-        ref: "Spot",
-        default: [],
-    }],
-});
+        enum: TAGS,
+    }
+    });
 
 export default mongoose.models.Tag || mongoose.model<ITag>("Tag", tagSchema);
