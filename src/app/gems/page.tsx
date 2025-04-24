@@ -21,6 +21,10 @@ interface Spot {
 const GemsPage = () => {
   const [spots, setSpots] = useState<Spot[]>([]);
   const [loading, setLoading] = useState(true);
+  const [center, setCenter] = useState<{ latitude: number; longitude: number }>({
+    latitude: 42.0, 
+    longitude: -72.0, 
+  });
 
   useEffect(() => {
     const fetchSpots = async () => {
@@ -48,6 +52,10 @@ const GemsPage = () => {
     (spot) => spot.location.latitude !== undefined && spot.location.longitude !== undefined && spot.tags.includes("gems")
   );
 
+  const handleSpotClick = (latitude: number, longitude: number) => {
+    setCenter({ latitude, longitude });  
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6 pt-20 bg-gradient-to-b from-[#fdf1e4] to-[#f5deb3]">
       <Navbar />
@@ -58,13 +66,14 @@ const GemsPage = () => {
       </p>
   
       <div className="w-full h-96 mb-8 rounded-lg overflow-hidden shadow-lg border border-gray-200">
-        <MapComponent spots={validSpots} />
+        <MapComponent spots={validSpots} center= {center} />
       </div>
   
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
         {validSpots.map((spot) => (
           <div
             key={spot._id}
+            onClick={() => handleSpotClick(spot.location.latitude, spot.location.longitude)}
             className="bg-[#fdf1e4] p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:scale-105 transition-transform duration-200"
           >
             <h2 className="text-2xl font-semibold text-gray-900 mb-2">

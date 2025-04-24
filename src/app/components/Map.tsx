@@ -1,5 +1,7 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
+import { q } from "framer-motion/client";
 
 interface Spot {
   _id: string;
@@ -15,11 +17,23 @@ interface Spot {
 
 interface MapComponentProps {
   spots: Spot[];
+  center: {latitude: number, longitude: number;}
 }
 
-const MapComponent = ({ spots }: MapComponentProps) => {
+const MapComponent = ({ spots, center }: MapComponentProps) => {
+  const MapUpdater = () => {
+    const map = useMap();
+    useEffect(() => {
+      map.setView([center.latitude, center.longitude], 13); 
+    }, [center, map]);
+    return null;    
+  };
+
   return (
-    <MapContainer center={[42.3918, -72.5285]} zoom={10} className="h-full w-full rounded-lg">
+    <MapContainer
+      center= {[center.latitude, center.longitude]}
+      zoom={13} 
+      className="h-full w-full rounded-lg">
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -34,6 +48,7 @@ const MapComponent = ({ spots }: MapComponentProps) => {
           </Popup>
         </Marker>
       ))}
+      <MapUpdater />
     </MapContainer>
   );
 };
