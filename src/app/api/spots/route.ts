@@ -7,10 +7,10 @@ export async function POST(request: Request) {
     await connectDB();
 
     const body = await request.json();
-    const { name, description, location, type } = body;
+    const {  name, location, description, type, rating, tags } = body;
 
     // Validate the request body
-    if (!name || !description || !location || !type) {
+    if (!name || !description || !location || !type || !tags || !rating) {
       return NextResponse.json(
         { message: "All fields are required" },
         { status: 400 }
@@ -23,6 +23,9 @@ export async function POST(request: Request) {
       description,
       location,
       type,
+      tags,
+      rating,
+      review: [],
     });
 
     return NextResponse.json(

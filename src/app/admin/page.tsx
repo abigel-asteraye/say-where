@@ -20,20 +20,23 @@ const AdminPage = () => {
     setMessage("");
     setStatus("");
 
+    const payload= {
+      name,
+          location: { latitude, longitude },
+          description,
+          type,
+          rating,
+          tags,
+    };
+
+    console.log("Submitting payload:", payload); 
     try {
       const response = await fetch("/api/spots", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name,
-          location: { latitude, longitude },
-          description,
-          type,
-          rating: rating === "" ? 0 : rating,
-          tags,
-        }),
+        body: JSON.stringify(payload),
       });
 
       if (response.ok) {
@@ -58,6 +61,7 @@ const AdminPage = () => {
   };
 
   const handleTagChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log("Handling tags")
     const selectedTags = Array.from(e.target.selectedOptions, (option) => option.value);
     console.log("Selected Tags:", selectedTags);
     setTags(selectedTags);
