@@ -14,6 +14,7 @@ const Navbar = () => {
     { name: "Events", path: "/events" },
     { name: "Dining", path: "/dining" }, 
     { name: "Hidden Gems", path: "/gems" },
+    { name: "Admin", path: "/admin" },
   ]
 
   return (

@@ -5,8 +5,8 @@ import { homeLinks } from "@/data/homeLinks";
 
 const HomePage: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#fdf1e4] to-[#f5deb3]">
-
+    <div className="flex flex-col min-h-screen items-center justify-center bg-gradient-to-b from-[#fdf1e4] to-[#f5deb3]">
+      <Navbar />
       <div
         className="flex flex-col items-center justify-center text-center py-20 px-6"
         style={{
@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
           backgroundPosition: "center",
         }}
       >
-        <h1 className="text-5xl font-extrabold text-gray-900 mb-4">
+        <h1 className="text-5xl font-extrabold text-gray-900 mb-4 mt-6">
           Say Where?
         </h1>
         <p className="text-lg text-gray-700 max-w-2xl mb-6">
