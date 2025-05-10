@@ -1,18 +1,16 @@
-import { NextResponse } from "next/server";
-import { createUser } from "../createUser";
-
-
+import { NextResponse } from 'next/server';
+import { createUser } from '../createUser';
 
 export async function POST(request: Request) {
   try {
     // Parse the JSON body from the request
     const body = await request.json();
-    console.log("Request body:", body);
+    console.log('Request body:', body);
 
     // Validate the request body
     if (!body || !body.email || !body.password || !body.name) {
       return NextResponse.json(
-        { message: "Name, Email and password are required" },
+        { message: 'Name, Email and password are required' },
         { status: 400 }
       );
     }
@@ -22,11 +20,14 @@ export async function POST(request: Request) {
     // Create the user
     const user = await createUser(name, email, password);
 
-    return NextResponse.json({ message: "User created", user }, { status: 201 });
+    return NextResponse.json(
+      { message: 'User created', user },
+      { status: 201 }
+    );
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { message: "Internal server error" },
+      { message: 'Internal server error' },
       { status: 500 }
     );
   }

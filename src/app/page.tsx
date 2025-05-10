@@ -1,7 +1,7 @@
-import React from "react";
-import Navbar from "./components/Navbar";
-import Card from "./components/Card";
-import { homeLinks } from "@/data/homeLinks";
+import React from 'react';
+import Navbar from './components/Navbar';
+import Card from './components/Card';
+import { homeLinks } from '@/data/homeLinks';
 
 const HomePage: React.FC = () => {
   return (
@@ -11,8 +11,8 @@ const HomePage: React.FC = () => {
         className="flex flex-col items-center justify-center text-center py-20 px-6"
         style={{
           backgroundImage: "url('/hero-bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
         <h1 className="text-5xl font-extrabold text-gray-900 mb-4 mt-6">

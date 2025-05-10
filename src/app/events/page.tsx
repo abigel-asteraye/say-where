@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import MapComponent from  "../components/Map"; 
-import Navbar from "../components/Navbar";
+import { useEffect, useState } from 'react';
+import MapComponent from '../components/Map';
+import Navbar from '../components/Navbar';
 
 interface Spot {
   _id: string;
@@ -21,20 +21,22 @@ interface Spot {
 const EventsPage = () => {
   const [spots, setSpots] = useState<Spot[]>([]);
   const [loading, setLoading] = useState(true);
-  const [center, setCenter] = useState<{ latitude: number; longitude: number }>({
-    latitude: 42.0, 
-    longitude: -72.0, 
-  });
+  const [center, setCenter] = useState<{ latitude: number; longitude: number }>(
+    {
+      latitude: 42.0,
+      longitude: -72.0,
+    }
+  );
 
   useEffect(() => {
     const fetchSpots = async () => {
       try {
-        const response = await fetch("/api/spots");
+        const response = await fetch('/api/spots');
         const data = await response.json();
-        console.log("Fetched spots:", data); 
+        console.log('Fetched spots:', data);
         setSpots(data);
       } catch (error) {
-        console.error("Error fetching spots:", error);
+        console.error('Error fetching spots:', error);
       } finally {
         setLoading(false);
       }
@@ -44,16 +46,23 @@ const EventsPage = () => {
   }, []);
 
   if (loading) {
-    return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        Loading...
+      </div>
+    );
   }
 
   // Filter out spots
   const validSpots = spots.filter(
-    (spot) => spot.location.latitude !== undefined && spot.location.longitude !== undefined && spot.tags.includes("events")
+    (spot) =>
+      spot.location.latitude !== undefined &&
+      spot.location.longitude !== undefined &&
+      spot.tags.includes('events')
   );
 
   const handleSpotClick = (latitude: number, longitude: number) => {
-    setCenter({ latitude, longitude });  
+    setCenter({ latitude, longitude });
   };
 
   return (
@@ -63,16 +72,18 @@ const EventsPage = () => {
       <p className="text-lg text-gray-700 mb-8">
         Explore the events happening near you!
       </p>
-  
+
       <div className="w-full h-96 mb-8 rounded-lg overflow-hidden shadow-lg border border-gray-200">
         <MapComponent spots={validSpots} center={center} />
       </div>
-  
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
         {validSpots.map((spot) => (
           <div
             key={spot._id}
-            onClick={() => handleSpotClick(spot.location.latitude, spot.location.longitude)}
+            onClick={() =>
+              handleSpotClick(spot.location.latitude, spot.location.longitude)
+            }
             className="bg-[#fdf1e4] p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:scale-105 transition-transform duration-200"
           >
             <h2 className="text-2xl font-semibold text-gray-900 mb-2">
