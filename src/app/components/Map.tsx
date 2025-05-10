@@ -36,7 +36,7 @@ const MapComponent = ({ spots, center }: MapComponentProps) => {
     const map = useMap();
     useEffect(() => {
       map.setView([center.latitude, center.longitude], 13);
-    }, [center, map]);
+    }, [map]);
     return null;
   };
 

@@ -37,7 +37,10 @@ const CategoryPage: React.FC<CategoryPageProps> = ({
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
         {spots.map((spot, index) => (
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-all duration-300">
+          <div
+            key={index}
+            className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-all duration-300"
+          >
             <div
               className="w-full h-48 bg-cover bg-center"
               style={{ backgroundImage: `url(${spot.image})` }}

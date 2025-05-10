@@ -11,6 +11,7 @@ if (!MONGODB_URI) {
   throw new Error('MONGODB_URI is not set. Please define it ');
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const cached = (global as any).mongoose || { conn: null, promise: null };
 
 async function connectDB() {
