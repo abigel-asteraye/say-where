@@ -1,9 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import MapComponent from '../components/Map';
 import Navbar from '../components/Navbar';
+import dynamic from 'next/dynamic';
 
+const MapComponent = dynamic(() => import('../components/Map'), {
+  ssr: false,
+});
 interface Spot {
   _id: string;
   name: string;
