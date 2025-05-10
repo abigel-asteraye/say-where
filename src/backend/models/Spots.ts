@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { ITag } from './Tags';
 import { TAGS } from './Tags';
 
 export interface ISpot extends Document {

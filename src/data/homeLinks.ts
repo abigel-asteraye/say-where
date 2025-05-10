@@ -1,6 +1,5 @@
 import {
   FaUtensils,
-  FaCoffee,
   FaBook,
   FaTree,
   FaCalendarAlt,

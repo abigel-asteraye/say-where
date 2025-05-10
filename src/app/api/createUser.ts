@@ -1,4 +1,3 @@
-import { hash } from 'crypto';
 import connectDB from '../../backend/db';
 import User from '../../backend/models/Users';
 import bcrypt from 'bcrypt';

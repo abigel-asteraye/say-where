@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "lint fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix."
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix."
   },
   "dependencies": {
     "@types/leaflet": "^1.9.16",
