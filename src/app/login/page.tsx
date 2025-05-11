@@ -30,6 +30,10 @@ const LoginPage = () => {
       } else {
         setMessage(data.message || 'Login successful!');
         setShowSnackbar(true);
+
+        //storing the session token in local storage
+        localStorage.setItem('authToken', 'true');
+        
         router.push('/');
       }
     } catch (error) {
