@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import AuthButton from '../components/AuthButton';
 import Navbar from '../components/Navbar';
 import dynamic from 'next/dynamic';
 
@@ -72,6 +73,7 @@ const OutdoorsPage = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6 pt-20 bg-gradient-to-b from-[#fdf1e4] to-[#f5deb3]">
       <Navbar />
+      <AuthButton />
       <h1 className="text-4xl font-extrabold text-gray-900 mb-6">
         Outdoor Spots
       </h1>

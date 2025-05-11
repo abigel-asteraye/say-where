@@ -25,6 +25,12 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  favorites: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: 'Spot',
+    },
+  ],
 });
 
 export default mongoose.models.User ||

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import AuthButton from '../components/AuthButton';
 import Navbar from '../components/Navbar';
 
 const MapComponent = dynamic(() => import('../components/Map'), {
@@ -71,6 +72,7 @@ const EventsPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6 pt-20 bg-gradient-to-b from-[#fdf1e4] to-[#f5deb3]">
+      <AuthButton />
       <Navbar />
       <h1 className="text-4xl font-extrabold text-gray-900 mb-6">Events</h1>
       <p className="text-lg text-gray-700 mb-8">

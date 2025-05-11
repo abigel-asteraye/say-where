@@ -22,9 +22,6 @@ const HomePage: React.FC = () => {
           Discover the best places to eat, study, or hang out. Say Where is your
           go-to guide for finding amazing spots near you!
         </p>
-        <button className="mt-6 bg-[#f5deb3] text-gray-800 py-3 px-6 rounded-lg shadow-md hover:bg-[#e6cfa3] transition duration-200">
-          Get Started
-        </button>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8 py-12">
