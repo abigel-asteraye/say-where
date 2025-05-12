@@ -1,4 +1,5 @@
 import React from 'react';
+import AuthButton from './components/AuthButton';
 import Navbar from './components/Navbar';
 import Card from './components/Card';
 import { homeLinks } from '@/data/homeLinks';
@@ -6,6 +7,7 @@ import { homeLinks } from '@/data/homeLinks';
 const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen items-center justify-center bg-gradient-to-b from-[#fdf1e4] to-[#f5deb3]">
+      <AuthButton />
       <Navbar />
       <div
         className="flex flex-col items-center justify-center text-center py-20 px-6"
